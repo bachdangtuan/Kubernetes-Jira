@@ -4,7 +4,6 @@ kind: Namespace
 metadata:
   name: metallb-system
 --- 
-
 apiVersion: metallb.io/v1beta1
 kind: IPAddressPool
 metadata:
