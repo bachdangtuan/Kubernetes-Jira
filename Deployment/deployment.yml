@@ -24,7 +24,7 @@ spec:
     spec:
       containers:
       - name: bachdangtuan-jira
-        image: bachdangtuan/jira
+        image: bachdangtuan/jira:latest
         ports:
         - containerPort: 8080
 
@@ -41,5 +41,5 @@ spec:
   ports:
     - protocol: TCP
       port: 80
-      targetPort: 8080
+      targetPort: 7000
   type: LoadBalancer
