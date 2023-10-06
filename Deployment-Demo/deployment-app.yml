@@ -1,15 +1,37 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: golang-demo-lb
+  name: app-demo-lb
 
 ---
-
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: jira-demo-lb
+  namespace: app-demo-lb
+  labels:
+    app: jira-demo-lb
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: jira-demo-lb
+  template:
+    metadata:
+      labels:
+        app: jira-demo-lb
+    spec:
+      containers:
+      - name: bachdangtuan-jira
+        image: bachdangtuan/jira:latest
+        ports:
+        - containerPort: 8080
+---
 apiVersion: apps/v1
 kind: ReplicaSet
 metadata:
   name: golang-demo-lb
-  namespace: golang-demo-lb
+  namespace: app-demo-lb
   labels:
     app: golang-demo-lb
 spec:
@@ -27,19 +49,3 @@ spec:
         image: bachdangtuan/golang-giaiphuongtrinh:latest
         ports:
         - containerPort: 7000
-
----
-
-# apiVersion: v1
-# kind: Service
-# metadata:
-#   name: golang-demo-lb
-#   namespace: golang-demo-lb
-# spec:
-#   selector:
-#     app: golang-demo-lb
-#   ports:
-#     - protocol: TCP
-#       port: 7000
-#       targetPort: 7000
-#   type: LoadBalancer

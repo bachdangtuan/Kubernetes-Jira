@@ -1,4 +1,5 @@
 ##### ConfigMap ######
+# IPAddressPool cho ứng dụng jira
 apiVersion: metallb.io/v1beta1
 kind: IPAddressPool
 metadata:
@@ -8,6 +9,7 @@ spec:
   addresses:
     - 10.0.0.134/32
 ---
+# L2Advertisement cho ứng dụng jira
 apiVersion: metallb.io/v1beta1
 kind: L2Advertisement
 metadata:
@@ -17,6 +19,7 @@ spec:
   ipAddressPools:
     - jira-pool
 ---
+
 apiVersion: v1
 kind: ConfigMap
 metadata:
