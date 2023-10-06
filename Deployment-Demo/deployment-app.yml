@@ -10,16 +10,16 @@ metadata:
   name: jira-demo-lb
   namespace: app-demo-lb
   labels:
-    app: jira-demo-lb
+    app: jiralb
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: jira-demo-lb
+      app: jiralb
   template:
     metadata:
       labels:
-        app: jira-demo-lb
+        app: jiralb
     spec:
       containers:
       - name: bachdangtuan-jira
@@ -33,16 +33,16 @@ metadata:
   name: golang-demo-lb
   namespace: app-demo-lb
   labels:
-    app: golang-demo-lb
+    app: golanglb
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: golang-demo-lb
+      app: golanglb
   template:
     metadata:
       labels:
-        app: golang-demo-lb
+        app: golanglb
     spec:
       containers:
       - name: bachdangtuan-golang
