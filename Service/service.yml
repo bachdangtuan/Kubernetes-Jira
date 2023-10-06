@@ -5,7 +5,7 @@ metadata:
   namespace: app-demo-lb
 spec:
   selector:
-    app: jiralb,golanglb  # Sử dụng một label và liệt kê tất cả các giá trị label mà bạn muốn chọn
+    app: my_jira,my_golang  # Sử dụng một label và liệt kê tất cả các giá trị label mà bạn muốn chọn
   ports:
     - name: jira-app
       protocol: TCP
