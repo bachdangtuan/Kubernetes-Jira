@@ -35,36 +35,43 @@ spec:
         ports:
         - containerPort: 8080
           name: "8080-port"
+        volumeMount:
+          - name: jira
+            mountPath: /var/atlassian/application-data/jira
+      volumes:
+        - name: jira
+          hostPath:
+            path: /root/data
+            type: Directory
+# ---
 
----
-
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: golang-app
-  namespace: app-tuan
-  labels:
-    app: golang-app
-spec:
-  replicas: 2
-  selector:
-    matchLabels:
-      lbtype: external
-  template:
-    metadata:
-      labels:
-        lbtype: external
-        app: golang-app
-    spec:
-      containers:
-      - name: golang-app
-        image: bachdangtuan/golang-giaiphuongtrinh:latest
-        tty: true
-        imagePullPolicy: Always
-        resources:
-          limits:
-            cpu: 500m
-            memory: "1Gi"
-        ports:
-        - containerPort: 7000
-          name: "7000-port"
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: golang-app
+#   namespace: app-tuan
+#   labels:
+#     app: golang-app
+# spec:
+#   replicas: 2
+#   selector:
+#     matchLabels:
+#       lbtype: external
+#   template:
+#     metadata:
+#       labels:
+#         lbtype: external
+#         app: golang-app
+#     spec:
+#       containers:
+#       - name: golang-app
+#         image: bachdangtuan/golang-giaiphuongtrinh:latest
+#         tty: true
+#         imagePullPolicy: Always
+#         resources:
+#           limits:
+#             cpu: 500m
+#             memory: "1Gi"
+#         ports:
+#         - containerPort: 7000
+#           name: "7000-port"
