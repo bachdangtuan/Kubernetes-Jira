@@ -27,11 +27,10 @@ spec:
       - name: jira
         image: bachdangtuan/jira:latest
         tty: true
-        imagePullPolicy: Always
         resources:
           limits:
-            cpu: 500m
-            memory: "2Gi"
+            cpu: 1000m
+            memory: "4Gi"
         ports:
         - containerPort: 8080
           name: "8080-port"
