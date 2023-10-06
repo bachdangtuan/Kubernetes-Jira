@@ -4,10 +4,11 @@ metadata:
   name: app-demo-lb
   namespace: app-demo-lb
 spec:
-  selector:
-    app: >
-       jira-demo-lb
-       golang-demo-lb
+  # selector:
+  #   matchLabels:
+  #     app: 
+  #      jira-demo-lb
+  #      golang-demo-lb
   ports:
     - name: jira-app
       protocol: TCP
