@@ -35,7 +35,7 @@ spec:
         ports:
         - containerPort: 8080
           name: "8080-port"
-        volumeMount:
+        volumeMounts:
           - name: jira
             mountPath: /var/atlassian/application-data/jira
       volumes:
