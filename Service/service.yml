@@ -4,18 +4,23 @@ metadata:
   name: app-demo-lb
   namespace: app-demo-lb
 spec:
-  # selector:
-  #   matchLabels:
-  #     app: 
-  #      jira-demo-lb
-  #      golang-demo-lb
-  ports:
-    - name: jira-app
-      protocol: TCP
-      port: 8080
-      targetPort: 8080
-    - name: golang-app
-      protocol: TCP
-      port: 7000
-      targetPort: 7000
+
+  selector1:
+      matchLabels:
+        app: jira-demo-lb
+      ports:
+        - name: jira-app
+          protocol: TCP
+          port: 8080
+          targetPort: 8080 
+      
+  selector2:
+      matchLabels:
+        app: golang-demo-lb
+      ports:
+        - name: golang-app
+          protocol: TCP
+          port: 7000
+          targetPort: 7000
+      
   type: LoadBalancer
