@@ -5,31 +5,47 @@ metadata:
 
 ---
 apiVersion: apps/v1
-kind: Deployment
+kind: ReplicaSet
 metadata:
-  name: nginx
+  name: jira-demo-lb
+  namespace: app-demo-lb
   labels:
-    app: nginx
+    app: my_jira
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
-      lbtype: external
+      app: my_jira
   template:
     metadata:
       labels:
-        lbtype: external
-        app: nginx
+        app: my_jira
     spec:
       containers:
-      - name: nginx
-        image: nginx:latest
-        tty: true
-        imagePullPolicy: Always
-        resources:
-          limits:
-            cpu: 500m
-            memory: "1Gi"
+      - name: bachdangtuan-jira
+        image: bachdangtuan/jira:latest
         ports:
-        - containerPort: 80
-          name: "80-port"
+        - containerPort: 8080
+---
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: golang-demo-lb
+  namespace: app-demo-lb
+  labels:
+    app: my_golang
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: my_golang
+  template:
+    metadata:
+      labels:
+        app: my_golang
+    spec:
+      containers:
+      - name: bachdangtuan-golang
+        image: bachdangtuan/golang-giaiphuongtrinh:latest
+        ports:
+        - containerPort: 7000
