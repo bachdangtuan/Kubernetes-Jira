@@ -5,12 +5,28 @@ metadata:
   namespace: app-demo-lb
 spec:
   selector:
-    app: my_golang  # Sử dụng một label và liệt kê tất cả các giá trị label mà bạn muốn chọn
+    app: my_jira
   ports:
     - name: jira-app
       protocol: TCP
       port: 8080
       targetPort: 8080
+    # - name: golang-app
+    #   protocol: TCP
+    #   port: 7000
+    #   targetPort: 7000
+  type: LoadBalancer
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: app-demo-lb
+  namespace: app-demo-lb
+spec:
+  selector:
+    app: my_golang
+  ports:
     - name: golang-app
       protocol: TCP
       port: 7000
