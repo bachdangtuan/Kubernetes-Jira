@@ -5,7 +5,7 @@ metadata:
   namespace: app-demo-lb
 spec:
   selector:
-    app: app-demo-lb  # Sử dụng một selector để chọn các pod của ứng dụng app-demo-lb
+    namespace: app-demo-lb  # Sử dụng một selector để chọn các pod của ứng dụng app-demo-lb
   ports:
     - name: jira-app
       protocol: TCP
